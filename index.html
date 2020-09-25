@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="main.css">
+
+<head>
+
+</head>
+
+<body>
+
+    <h1>Template</h1>
+
+    <p>This is a blank template for a web page.</p>
+
+</body>
+
+<script type="text/javascript">
+    // Class Test
+    // Initial state
+    // let person = new Person();
+
+    // Person.sayHello();
+
+    class Person {
+        constructor(first, last) {
+            this.first = first;
+            this.last = last;
+        }
+
+        sayHello() {
+            const {
+                first,
+                last
+            } = this;
+            return `${first} ${last}`;
+        }
+    }
+
+    let person = new Person('Haim', 'Moshe');
+
+    console.log(person.sayHello());
+
+    // Should print 'Hello Haim Moshe'
+
+    // Array split
+    // We have a string and we want split it
+
+    function splitString(value) {
+        if (value) {
+            return value.split('').join(' ');
+        }
+        return null;
+    }
+
+    console.log(splitString('specificity'));
+
+    // Now we add it as a prototype
+
+    String.prototype.splitStringP = function(value) {
+        return splitString(this);
+    }
+
+    console.log('inclination'.splitStringP());
+
+    // First class Function
+
+    function greet() {
+        console.log('Hi');
+    }
+
+    greet.language = 'English';
+    greet.getLanguage = function() {
+        return this.language;
+    }
+
+    console.log(greet);
+    console.log(greet.language);
+    console.log(greet.getLanguage());
+
+    // Carry sum function
+    // Write a sum function that van be used like this:
+    // sum (3)(2) = 5
+
+    function sumTwo(firstOperand) {
+        return function(secondOperand) {
+            return firstOperand + secondOperand;
+        }
+    }
+
+    console.log(sumTwo(3)(2));
+
+    // Carry sum function more complex
+    // Write a sum function that van be used like this:
+    // sum (3)(2) = 5
+
+    function sumMultiple(firstOperand) {
+        let sum = firstOperand;
+        return function by(secondOperand) {
+            if (secondOperand === undefined) {
+                return sum;
+            }
+            sum += secondOperand;
+            return by;
+        }
+    }
+
+    console.log(sumMultiple(3)(2)(3)());
+</script>
+
+</html>
